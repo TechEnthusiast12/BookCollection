@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { useState, useEffect, useContext } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import axios from 'axios';
+import Navbar from './components/Navbar';
+import Login from './components/Login';
+import Home from './components/Home';
+import Register from './components/Register';
+import UserProfle from './components/UserProfile';
+import AppContext from './context/app-context';
+import Books from './components/Books';
+import BookInfo from './components/BookInfo';
 
-function App() {
+
+
+
+
+const App = () => {
+
+  const {isAuth} = useContext(AppContext);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      
+      <Navbar/>
+
+        <Routes>
+          <Route path ='/' element = {<Books/>}/>
+          <Route path='/search' element = {<Home/>}/>
+          <Route path='/login' element = {<Login/>}/>
+          <Route path = '/register' element = {<Register/>}/>
+          <Route path = '/userProfile' element = {isAuth ? (<UserProfle/>) : (<Navigate replace to={'/login'}/>)}/>
+          <Route path = 'info' element = {<BookInfo/>}/>
+        </Routes>
+   
+    </Router>
+  )
 }
 
-export default App;
+export default App
