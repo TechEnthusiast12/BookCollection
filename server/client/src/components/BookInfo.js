@@ -12,7 +12,7 @@ const BookInfo = () => {
     
     const handleSave = async (book_number)=>{
         try {
-            const res = await fetch("http://localhost:8000/results",{
+            const res = await fetch("https://bookcollectionwebapp.herokuapp.com/results",{
                 method: "POST",
                 headers:{"token": localStorage.token,"Content-Type": "application/json"},
                 body: JSON.stringify({book_number})

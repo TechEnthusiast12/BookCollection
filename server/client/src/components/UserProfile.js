@@ -13,7 +13,7 @@ const UserProfile = () => {
     const getUser = async()=>{
       try {
 
-        const response = await fetch("http://localhost:8000/dashboard", {
+        const response = await fetch("https://bookcollectionwebapp.herokuapp.com/dashboard", {
         method: "GET",
         headers: {"token": localStorage.token},
       }) 

@@ -8,7 +8,7 @@ const Books = () => {
 
     useEffect(()=>{
      const getBooks = async()=>{
-        const response = await axios.get("http://localhost:8000/books/popular");
+        const response = await axios.get("https://bookcollectionwebapp.herokuapp.com/books/popular");
         setBooks(response.data);
         }
         getBooks();
@@ -17,7 +17,7 @@ const Books = () => {
 
     const handleSave = async (book_number)=>{
         try {
-            const res = await fetch("http://localhost:8000/results",{
+            const res = await fetch("https://bookcollectionwebapp.herokuapp.com/results",{
                 method: "POST",
                 headers:{"token": localStorage.token,"Content-Type": "application/json"},
                 body: JSON.stringify({book_number})

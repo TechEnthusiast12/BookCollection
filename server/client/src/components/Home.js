@@ -11,7 +11,7 @@ const Home = () => {
 
   useEffect(()=>{
     const getBooks = async()=>{
-      const response = await axios.get(`http://localhost:8000/books?q=${query}`);
+      const response = await axios.get(`https://bookcollectionwebapp.herokuapp.com//books?q=${query}`);
       
       setData(response.data);
     }
