@@ -32,7 +32,7 @@ const Register = () => {
         e.preventDefault();
         try {
             const body = {email, password, name};
-            const response = await fetch("https://bookcollectionwebapp.herokuapp.com/auth/register",{
+            const response = await fetch("/auth/register",{
                 method: 'POST',
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify(body)
@@ -65,7 +65,7 @@ const Register = () => {
           <input type="email" name="email" placeholder="E-Mail" onChange={handleEmail} value={email} autoComplete = "off" required/>
           <input type="password" name="password" placeholder="Password" value = {password} onChange={handlePassword}/>
            
-        <button className="submit">Login</button>
+        <button className="submit">Register</button>
       </form>
       <p>Already have an Account ? <Link to= '/login'>LogIn</Link></p>
   </div>

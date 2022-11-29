@@ -10,7 +10,7 @@ const AppState = (props) => {
     try {
 
       const Verify = async()=>{
-        const response = await fetch('https://bookcollectionwebapp.herokuapp.com/auth/verify',{
+        const response = await fetch('/auth/verify',{
         method: 'GET',
         headers: {token: localStorage.token}
         });

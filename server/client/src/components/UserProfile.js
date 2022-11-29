@@ -13,7 +13,7 @@ const UserProfile = () => {
     const getUser = async()=>{
       try {
 
-        const response = await fetch("https://bookcollectionwebapp.herokuapp.com/dashboard", {
+        const response = await fetch("/dashboard", {
         method: "GET",
         headers: {"token": localStorage.token},
       }) 
@@ -32,7 +32,7 @@ const UserProfile = () => {
     const getUserBooks = async()=>{
       try {
         
-        const response = await fetch("http://localhost:8000/dashboard/userBooks", {
+        const response = await fetch("/dashboard/userBooks", {
         method: "GET",
         headers: {"token": localStorage.token},
       }) 
@@ -50,7 +50,7 @@ const UserProfile = () => {
 
     const handleDelete = async (user_id, book_number)=>{
       try {
-        const response = await fetch(`http://localhost:8000/dashboard/userBooks?user_id=${user_id}&book_number=${book_number}`,{
+        const response = await fetch(`/dashboard/userBooks?user_id=${user_id}&book_number=${book_number}`,{
           method: "DELETE",
           headers:{"token": localStorage.token}
         })

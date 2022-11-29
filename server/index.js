@@ -11,6 +11,12 @@ require('dotenv').config();
 app.use(express.json());
 app.use(cors());;
 
+if(process.env.NODE_ENV === 'production'){
+    //Serve static content
+    app.use(express.static(path.join(__dirname,'/client/build')))
+   
+}
+
 // Register and Login routes
 app.use('/auth', register_login);
 
@@ -24,14 +30,10 @@ app.use('/results', results);
 
 const PORT = process.env.PORT || 8000;
 
-if(process.env.NODE_ENV === 'production'){
-    //Serve static content
-    app.use(express.static(path.join(__dirname,'/client/build')))
 
-}
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client/build/index.html"));
+  });
 
-app.get("*", (req, res)=>{
-    res.sendFile(path.join(__dirname, "/client/build/index.html"));
-})
 
 app.listen(PORT, ()=> console.log(`Server running on port ${PORT}...`));

@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState, useEffect, useContext } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
-import axios from 'axios';
 import Navbar from './components/Navbar';
 import Login from './components/Login';
 import Home from './components/Home';
@@ -10,10 +9,6 @@ import UserProfle from './components/UserProfile';
 import AppContext from './context/app-context';
 import Books from './components/Books';
 import BookInfo from './components/BookInfo';
-
-
-
-
 
 const App = () => {
 

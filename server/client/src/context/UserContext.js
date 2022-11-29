@@ -8,7 +8,7 @@ export const UserProvider = ({children})=>{
         const getUser = async()=>{
             try {
       
-              const response = await fetch("https://bookcollectionwebapp.herokuapp.com/dashboard", {
+              const response = await fetch("/dashboard", {
               method: "GET",
               headers: {"token": localStorage.token},
             }) 
