@@ -3,7 +3,8 @@ const cors = require('cors');
 const register_login = require('./routes/jwtAuth');
 const books = require('./routes/books');
 const dashboard = require('./routes/dashBoard');
-const results = require('./routes/results')
+const results = require('./routes/results');
+const path = require('path');
 const app = express();
 require('dotenv').config();
 
@@ -23,6 +24,14 @@ app.use('/results', results);
 
 const PORT = process.env.PORT || 8000;
 
+if(process.env.NODE_ENV === 'production'){
+    //Serve static content
+    app.use(express.static(path.join(__dirname,'/client/build')))
 
+}
+
+app.get("*", (req, res)=>{
+    res.sendFile(path.join(__dirname, "/client/build/index.html"));
+})
 
 app.listen(PORT, ()=> console.log(`Server running on port ${PORT}...`));
